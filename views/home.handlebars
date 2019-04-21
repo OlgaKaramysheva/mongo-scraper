@@ -1,0 +1,22 @@
+<h1>Get the latest news on spaceX!</h1>
+
+<h2>New Articles</h2>
+
+<a href="/scrape">Scrape new articles</a>
+
+{{#each articles}}
+    <hr />
+    <h3>{{this.title}}</h3>
+    <p>{{this.description}}</p>
+    <a href={{this.link}}>Go To Article</a>
+    <h5>Article comments</h5>
+    {{#each this.comments}}
+        <p>{{this.body}}</p>
+        <small>{{this.createdDate}}</small>
+    {{/each}}
+    <form action="/api/{{this._id}}/comment" method="POST">
+        <textarea name="body"></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+    <hr />
+{{/each}}
